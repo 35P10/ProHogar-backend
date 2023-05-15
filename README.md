@@ -3,6 +3,11 @@ Early propotype for our startup. :)
 
 ## 🚀Build
 ```
+dotnet build
+```
+
+## 🚀Run
+```
 dotnet run
 ```
 ### Swagger
