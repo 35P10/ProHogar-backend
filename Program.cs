@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDBContext>(opt =>
-    opt.UseInMemoryDatabase("ProHome_DBTest")); // nombre de la base de datos
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("DevConection"))); // nombre de la base de datos
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
