@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TodoApi.Models;
+using ProHogarApi.Models;
 
 #nullable disable
 
 namespace ProHogarApi.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20230515181645_InitialCreate")]
+    [Migration("20230519014437_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

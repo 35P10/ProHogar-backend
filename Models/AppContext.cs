@@ -3,7 +3,7 @@
 using Microsoft.EntityFrameworkCore;
 using ProHogarApi.Models;
 
-namespace TodoApi.Models;
+namespace ProHogarApi.Models;
 
 public class AppDBContext : DbContext
 {

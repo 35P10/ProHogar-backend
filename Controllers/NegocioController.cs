@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProHogarApi.Models;
-using TodoApi.Models;
 
 namespace ProHogarApi.Controllers
 {

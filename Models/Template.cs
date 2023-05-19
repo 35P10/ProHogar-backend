@@ -1,6 +1,6 @@
 namespace ProHogarApi.Models;
 
-public class MyModel{    
+public class MyModel{
     public long Id { get; set; }
     public string? Name { get; set; }
     public bool IsComplete { get; set; }
