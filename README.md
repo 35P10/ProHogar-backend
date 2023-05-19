@@ -3,6 +3,8 @@ Early propotype for our startup. :)
 
 ## 🚀Build
 ```
+dotnet tool install --global dotnet-ef
+dotnet ef database update
 dotnet build
 ```
 
