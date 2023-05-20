@@ -12,7 +12,11 @@ dotnet build
 ```
 dotnet run
 ```
-### Swagger
-```
-dotnet watch run
-```
+
+## 🧩Endpoints
+
+### Servicio
+* Get all Servicio:
+``` /api/Servicio ```
+* Get an specific Servicio:
+``` /api/Servicio/{id} ```
