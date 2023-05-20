@@ -38,5 +38,39 @@ namespace ProHogarApi.Controllers
                     NegocioNombre = sn.Negocio.NombreEmpresa
                 }).ToListAsync();
         }
+
+        // GET: api/Servicio/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ServicioDescription>> GetNegocio(long id){
+            if (_context.Negocio == null){
+              return NotFound();
+            }
+
+            var descripcion = await _context.Servicio
+                .Where(s => s.ServicioID == id)
+                .Join(_context.Negocio, 
+                    s => s.NegocioID,
+                    n => n.NegocioID, 
+                    (s, n) => new {Servicio = s, Negocio = n})
+                .Select(sn => new ServicioDescription{
+                    ServicioID = sn.Servicio.ServicioID,
+                    ServicioNombre = sn.Servicio.Nombre,
+                    ServicioCategoria = sn.Servicio.Categoria,
+                    ServicioDistrito = sn.Servicio.Distrito,
+                    ServicioDireccion = sn.Servicio.Distrito,
+                    ServicioDescripcion = sn.Servicio.Distrito,
+                    ServicioHorarioInicio = sn.Servicio.HorarioInicio,
+                    ServicioHorarioFin = sn.Servicio.HorarioFin,
+                    NegocioID = sn.Negocio.NegocioID,
+                    NegocioNombre = sn.Negocio.NombreEmpresa,
+                    ServicioCalificacion = 5
+                }).SingleOrDefaultAsync();
+            
+            if(descripcion == null){
+                return NotFound();
+            }
+
+            return descripcion;
+        }
     }
 }
