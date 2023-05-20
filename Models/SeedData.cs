@@ -13,7 +13,7 @@ public static class SeedData {
                 DbContextOptions<AppDBContext>>()))
         {
             // Look for any usuarios.
-            if (context.Usuario.Any())
+            if (!context.Usuario.Any())
             {
                 return;
             }
@@ -64,7 +64,7 @@ public static class SeedData {
             );
 
             // Look for any negocios.
-            if (context.Negocio.Any())
+            if (!context.Negocio.Any())
             {
                 return;   // DB has been seeded
             }
@@ -81,7 +81,7 @@ public static class SeedData {
             );
 
             // Look for any clientes.
-            if (context.Cliente.Any())
+            if (!context.Cliente.Any())
             {
                 return;
             }
@@ -109,7 +109,7 @@ public static class SeedData {
             );
 
             // Look for any servicios.
-            if (context.Servicio.Any())
+            if (!context.Servicio.Any())
             {
                 return;   
             }
@@ -181,7 +181,7 @@ public static class SeedData {
             );
 
             // Look for any pedidos.
-            if (context.Pedido.Any())
+            if (!context.Pedido.Any())
             {
                 return;  
             }
@@ -217,7 +217,7 @@ public static class SeedData {
             );
 
             // Look for any chats.
-            if (context.Chat.Any())
+            if (!context.Chat.Any())
             {
                 return;  
             }
@@ -245,7 +245,7 @@ public static class SeedData {
             );
 
             // Look for any mensajes.
-            if (context.Mensajes.Any())
+            if (!context.Mensajes.Any())
             {
                 return;
             }
