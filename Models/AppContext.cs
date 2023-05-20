@@ -12,5 +12,7 @@ public class AppDBContext : DbContext
     {
     }
     public DbSet<ProHogarApi.Models.Negocio> Negocio { get; set; } = default!;
+    public DbSet<ProHogarApi.Models.Usuario> Usuario { get; set; } = default!;
+    public DbSet<ProHogarApi.Models.Servicio> Servicio { get; set; } = default!;
 
 }

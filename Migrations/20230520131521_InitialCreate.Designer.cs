@@ -11,7 +11,7 @@ using ProHogarApi.Models;
 namespace ProHogarApi.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20230519014437_InitialCreate")]
+    [Migration("20230520131521_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -26,16 +26,20 @@ namespace ProHogarApi.Migrations
 
             modelBuilder.Entity("ProHogarApi.Models.Negocio", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("NegocioID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("NegocioID"));
 
-                    b.Property<string>("Name")
+                    b.Property<string>("NombreEmpresa")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<int>("Telefono")
+                        .HasColumnType("int");
+
+                    b.HasKey("NegocioID");
 
                     b.ToTable("Negocio");
                 });
