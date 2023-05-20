@@ -33,7 +33,7 @@ namespace ProHogarApi.Controllers
 
         // GET: api/Negocio/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Negocio>> GetNegocio(long id)
+        public async Task<ActionResult<Negocio>> GetNegocio(int id)
         {
           if (_context.Negocio == null)
           {

@@ -21,7 +21,7 @@ namespace ProHogarApi.Controllers
 
         // GET: api/Servicio
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ServicioShortDescription>>> GetNegocio(){
+        public async Task<ActionResult<IEnumerable<ServicioShortDescription>>> GetServicio(){
           if (_context.Servicio == null){
               return NotFound();
           }
@@ -41,7 +41,7 @@ namespace ProHogarApi.Controllers
 
         // GET: api/Servicio/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ServicioDescription>> GetNegocio(long id){
+        public async Task<ActionResult<ServicioDescription>> GetServicio(long id){
             if (_context.Negocio == null){
               return NotFound();
             }
