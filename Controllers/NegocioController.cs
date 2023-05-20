@@ -54,7 +54,7 @@ namespace ProHogarApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutNegocio(long id, Negocio negocio)
         {
-            if (id != negocio.Id)
+            if (id != negocio.NegocioID)
             {
                 return BadRequest();
             }
@@ -92,7 +92,7 @@ namespace ProHogarApi.Controllers
             _context.Negocio.Add(negocio);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetNegocio", new { id = negocio.Id }, negocio);
+            return CreatedAtAction("GetNegocio", new { id = negocio.NegocioID }, negocio);
         }
 
         // DELETE: api/Negocio/5
@@ -117,7 +117,7 @@ namespace ProHogarApi.Controllers
 
         private bool NegocioExists(long id)
         {
-            return (_context.Negocio?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Negocio?.Any(e => e.NegocioID == id)).GetValueOrDefault();
         }
     }
 }

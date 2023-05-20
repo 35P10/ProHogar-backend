@@ -21,10 +21,12 @@ public static class SeedData {
             context.Negocio.AddRange(
                 new Negocio{
                     //Id = 1, database automatically assigns it.
-                    Name = "Negocio 01"
+                    NombreEmpresa = "Negocio 01",
+                    Telefono = 123456789
                 },
                 new Negocio{
-                    Name = "Negocio 02"
+                    NombreEmpresa = "Negocio 02",
+                    Telefono = 123456789
                 }
             );
             
