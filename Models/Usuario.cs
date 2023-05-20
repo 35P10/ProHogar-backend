@@ -7,3 +7,8 @@ public class Usuario{
     public string? CorreoElectronico { get; set; }
     public string? Password { get; set; }
 }
+
+public class UsuarioLogin {
+    public string? CorreoElectronico { get; set; }
+    public string? Password { get; set; }
+}
