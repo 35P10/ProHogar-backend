@@ -37,7 +37,7 @@
 		<type label="SET" length="1" sql="SET" quote=""/>
 		<type label="Bit" length="0" sql="bit" quote=""/>
 	</group>
-</datatypes><table x="867" y="421" name="SERVICIO">
+</datatypes><table x="867" y="420" name="SERVICIO">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="FAVORITOS" row="id_servicio" />
@@ -141,7 +141,7 @@
 <part>id_servicio</part>
 </key>
 </table>
-<table x="600" y="28" name="PEDIDO">
+<table x="650" y="29" name="PEDIDO">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -155,9 +155,17 @@
 <row name="horario_final" null="1" autoincrement="0">
 <datatype>DATETIME</datatype>
 <default>NULL</default></row>
+<row name="estado" null="1" autoincrement="0">
+<datatype>CHAR</datatype>
+<default>NULL</default></row>
+<row name="id_servicio" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="SERVICIO" row="id" />
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 <part>id_cliente</part>
+<part>id_servicio</part>
 </key>
 </table>
 <table x="201" y="446" name="NEGOCIO">
@@ -220,28 +228,6 @@
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
-</key>
-</table>
-<table x="811" y="265" name="PEDIDO_SERVICIO">
-<row name="id_pedido" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="PEDIDO" row="id" />
-</row>
-<row name="id_servicio" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="SERVICIO" row="id" />
-</row>
-<row name="id_cliente" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="PEDIDO" row="id_cliente" />
-</row>
-<row name="estado" null="1" autoincrement="0">
-<datatype>CHAR</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>id_pedido</part>
-<part>id_servicio</part>
-<part>id_cliente</part>
 </key>
 </table>
 </sql>

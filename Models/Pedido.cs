@@ -7,5 +7,7 @@ public class Pedido{
     [Precision(18, 2)]
     public decimal PrecioFinal { get; set; }
     public DateTime HorarioFinal { get; set; }
+    public string? Estado { get; set; }
     public int ClienteID { get; set; }
+    public int ServicioID { get; set; }
 }
