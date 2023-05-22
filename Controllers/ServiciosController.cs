@@ -22,9 +22,9 @@ namespace ProHogarApi.Controllers
         // GET: api/Servicio
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ServicioShortDescription>>> GetServicio(){
-          if (_context.Servicio == null){
-              return NotFound();
-          }
+            if (_context.Servicio == null){
+                return NotFound();
+            }
             return await _context.Servicio
                 .Join(_context.Negocio, 
                     s => s.NegocioID,
@@ -42,7 +42,7 @@ namespace ProHogarApi.Controllers
         // GET: api/Servicio/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ServicioDescription>> GetServicio(long id){
-            if (_context.Negocio == null){
+            if (_context.Servicio == null){
               return NotFound();
             }
 
@@ -72,5 +72,27 @@ namespace ProHogarApi.Controllers
 
             return descripcion;
         }
+
+        [HttpGet("byNegocio/{id}")]
+        public async Task<ActionResult<IEnumerable<ServicioShortDescription>>> GetServicioByNegocio(int id) {
+            if (_context.Servicio == null){
+                return NotFound();
+            }
+        
+            return await _context.Servicio
+                .Where(s => s.NegocioID == id)
+                .Join(_context.Negocio, 
+                    s => s.NegocioID,
+                    n => n.NegocioID, 
+                    (s, n) => new {Servicio = s, Negocio = n})
+                .Select(sn => new ServicioShortDescription{
+                    ServicioID = sn.Servicio.ServicioID,
+                    ServicioNombre = sn.Servicio.Nombre,
+                    ServicioDistrito = sn.Servicio.Distrito,
+                    ServicioCategoria = sn.Servicio.Categoria,
+                    NegocioNombre = sn.Negocio.NombreEmpresa
+                }).ToListAsync();
+        }
+
     }
 }
