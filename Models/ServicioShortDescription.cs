@@ -12,4 +12,5 @@ public class ServicioShortDescription{
     public string? ServicioCategoria { get; set; }
     [MaxLength(100)]
     public string? NegocioNombre { get; set; }
+    public bool IsFavorite { get; set; }
 }

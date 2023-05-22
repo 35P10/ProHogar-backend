@@ -20,12 +20,18 @@ namespace ProHogarApi.Controllers
             _context = context;
         }
 
-        // GET: api/Servicio
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<ServicioShortDescription>>> GetServicio(){
+        // POST: api/Servicio/all
+        [HttpPost("all")]
+        public async Task<ActionResult<IEnumerable<ServicioShortDescription>>> GetServicio([FromBody] int clienteId){
             if (_context.Servicio == null){
                 return NotFound();
             }
+            
+            var cliente = await _context.Cliente.FindAsync(clienteId);
+            if (cliente == null){
+                return NotFound();
+            }
+
             return await _context.Servicio
                 .Join(_context.Negocio, 
                     s => s.NegocioID,
@@ -36,7 +42,8 @@ namespace ProHogarApi.Controllers
                     ServicioNombre = sn.Servicio.Nombre,
                     ServicioDistrito = sn.Servicio.Distrito,
                     ServicioCategoria = sn.Servicio.Categoria,
-                    NegocioNombre = sn.Negocio.NombreEmpresa
+                    NegocioNombre = sn.Negocio.NombreEmpresa,
+                    IsFavorite = _context.Favoritos.Any(f => f.ClienteID == clienteId && f.FavoritosID == sn.Servicio.ServicioID)
                 }).ToListAsync();
         }
 
