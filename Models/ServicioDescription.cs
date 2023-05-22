@@ -23,4 +23,5 @@ public class ServicioDescription{
     public string? NegocioNombre { get; set; }
     [Precision(1, 1)]
     public decimal ServicioCalificacion { get; set; }
+    public bool IsFavorite { get; set; }
 }

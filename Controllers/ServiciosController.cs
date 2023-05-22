@@ -22,13 +22,8 @@ namespace ProHogarApi.Controllers
 
         // POST: api/Servicio/all
         [HttpPost("all")]
-        public async Task<ActionResult<IEnumerable<ServicioShortDescription>>> GetServicio([FromBody] int clienteId){
+        public async Task<ActionResult<IEnumerable<ServicioShortDescription>>> GetServicio([FromBody] int? clienteId){
             if (_context.Servicio == null){
-                return NotFound();
-            }
-            
-            var cliente = await _context.Cliente.FindAsync(clienteId);
-            if (cliente == null){
                 return NotFound();
             }
 
@@ -43,19 +38,16 @@ namespace ProHogarApi.Controllers
                     ServicioDistrito = sn.Servicio.Distrito,
                     ServicioCategoria = sn.Servicio.Categoria,
                     NegocioNombre = sn.Negocio.NombreEmpresa,
-                    IsFavorite = _context.Favoritos.Any(f => f.ClienteID == clienteId && f.FavoritosID == sn.Servicio.ServicioID)
+                    IsFavorite = clienteId != null ? _context.Favoritos.Any(f => f.ClienteID == clienteId && f.FavoritosID == sn.Servicio.ServicioID) : false
                 }).ToListAsync();
         }
 
         // GET: api/Servicio/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<ServicioDescription>> GetServicio(long id){
-            if (_context.Servicio == null){
-              return NotFound();
-            }
-
+        [HttpGet("{servicioId}")]
+        public async Task<ActionResult<ServicioDescription>> GetServicio(long servicioId, int? clienteId){
+            
             var descripcion = await _context.Servicio
-                .Where(s => s.ServicioID == id)
+                .Where(s => s.ServicioID == servicioId)
                 .Join(_context.Negocio, 
                     s => s.NegocioID,
                     n => n.NegocioID, 
@@ -71,11 +63,12 @@ namespace ProHogarApi.Controllers
                     ServicioHorarioFin = sn.Servicio.HorarioFin,
                     NegocioID = sn.Negocio.NegocioID,
                     NegocioNombre = sn.Negocio.NombreEmpresa,
+                    IsFavorite = clienteId != null ? _context.Favoritos.Any(f => f.ClienteID == clienteId && f.FavoritosID == sn.Servicio.ServicioID): false,
                     ServicioCalificacion = 5
                 }).SingleOrDefaultAsync();
             
             if(descripcion == null){
-                return NotFound();
+                return BadRequest("Servicio no existe");
             }
 
             return descripcion;
