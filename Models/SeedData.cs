@@ -331,6 +331,36 @@ public static class SeedData {
                 );
             }
             
+            // Look for any favoritos.
+            if (!context.Favoritos.Any()){
+                context.Favoritos.AddRange(
+                    new Favoritos {
+                        ClienteID = 1,
+                        ServiciosID = 1
+                    },
+                    new Favoritos {
+                        ClienteID = 1,
+                        ServiciosID = 2
+                    },
+                    new Favoritos {
+                        ClienteID = 1,
+                        ServiciosID = 4
+                    },
+                    new Favoritos {
+                        ClienteID = 1,
+                        ServiciosID = 5
+                    },
+                    new Favoritos {
+                        ClienteID = 2,
+                        ServiciosID = 1
+                    },
+                    new Favoritos {
+                        ClienteID = 2,
+                        ServiciosID = 3
+                    }
+                );
+            }
+            
             context.SaveChanges();
         }
     }
